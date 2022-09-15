@@ -6,11 +6,11 @@ public class SpringStart {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
                 "applicationContext.xml");
-        Music music = context.getBean("springstart",Music.class);
-        MusicPlayer musicPlayer = new MusicPlayer(music);
-
-        musicPlayer.playSong();
-
+//        Music music = context.getBean("springstart",Music.class);
+//        MusicPlayer musicPlayer = new MusicPlayer(music);
+//        musicPlayer.playSong();
+        MusicPlayer musicplay =  context.getBean("musicplayer",MusicPlayer.class);
+        musicplay.playSong();
         context.close();
 
     }
