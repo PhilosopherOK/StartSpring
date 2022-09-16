@@ -7,7 +7,7 @@ public class SpringStart {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
 
-        MusicPlayer musicplay =  context.getBean("musicplayer",MusicPlayer.class);
+        MusicPlayer musicplay =  context.getBean("musicPlayer",MusicPlayer.class);
         musicplay.playSong();
         context.close();
 
