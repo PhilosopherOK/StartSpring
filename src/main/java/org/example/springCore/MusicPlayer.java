@@ -1,24 +1,21 @@
 package org.example.springCore;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.LinkedList;
 import java.util.List;
-@Component("musicplayer")
+import java.util.Random;
+
 public class MusicPlayer {
-    public List<Music> getListOfMusic() {
-        return listOfMusic;
-    }@Autowired
-    public void setListOfMusic(List<Music> listOfMusic) {
-        this.listOfMusic = listOfMusic;
-    }
-    private List <Music> listOfMusic = new LinkedList<>();
+
+    @Value("#{'${my.list.of.strings}'.split(',')}")
+    private List<Music> listOfMusic;
 
     private Music music;
 
-    public MusicPlayer(Music music) {
-        this.music = music;
+    public MusicPlayer(List<Music> listOfMusic) {
+        this.listOfMusic = listOfMusic;
     }
 
     public MusicPlayer() {
@@ -30,8 +27,8 @@ public class MusicPlayer {
     }
 
     public void playSong() {
-        for(Music music:listOfMusic) {
-            System.out.println("Playing music " + music.getSong());
-        }
+        Random random = new Random();
+        System.out.println("Playing music " + listOfMusic.get(random.nextInt(2)).getSong());
     }
 }
+
